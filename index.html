@@ -1,0 +1,68 @@
+フラグ数：<input type="number"></input>
+
+<br>
+
+<div style="display:flex;flex-direction: row;">
+  <div style="margin:10px;">
+    <textarea id="p_title" style="font-size:200%;font-weight:bold;width:333px;height:50px;overflow:auto;line-height:130%;border:black solid 3px;"></textarea>
+
+    <br>
+    
+    <textarea id="p_byosha" style="font-size:16px;width:333px;height:350px;overflow:auto;line-height:130%;border:black solid 3px;"></textarea>
+    
+    <br>
+    
+    <button onclick="copy_desc()">コピー</button>
+  </div>
+
+  <div>
+    <button onclick="add_page()">追加</button>
+    <button>削除</button>
+    <br>
+    <select id="p_list" style="height:300px;width:250px;border:black solid 5px;overflow:auto;">
+      <option>1</option>
+    </select>
+    
+  </div>
+</div>
+
+<hr>
+<!-- 道具 ============================================ -->
+<div style="display:flex;flex-direction: row;">
+  <div style="margin:10px;">
+    <textarea id="i_title" style="font-weight:bold;width:333px;height:50px;overflow:auto;line-height:130%;border:black solid 3px;"></textarea>
+    <br>
+    
+    <textarea id="i_byosha" style="font-weight:bold;width:333px;height:100px;overflow:auto;line-height:130%;border:black solid 3px;"></textarea>
+  </div>
+  
+  <div>
+    <button>追加</button>
+    <button>削除</button>
+    <div style="height:100px;width:250px;border:black solid 5px;overflow:auto;">
+    </div>
+  </div>
+</div>
+
+<script>
+var fiearr=[{"titl":"", "desc":""}];
+
+function remake_listpage(){
+  document.getElementById("p_list").innerHTML = "" ;
+  for(var i=0;i<fiearr.length;i++){
+    document.getElementById("p_list").innerHTML += "<option>" + i + ":" + fiearr[i]["titl"]+"</option>";
+  }
+}
+
+
+function add_page(){
+  fiearr[fiearr.length]={"titl":"","desc":""};
+  remake_listpage();
+}
+
+function copy_desc(){
+  var txt = document.getElementById("p_byosha");
+  txt.select();
+  document.execCommand("Copy");
+}
+</script>
